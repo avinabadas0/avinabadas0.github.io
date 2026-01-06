@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="{{ or .Site.Language.LanguageCode .Site.Language.Lang }}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ .Title }} | {{ .Site.Title }}</title>
+    {{ $style := resources.Get "css/main.css" }}
+    <link rel="stylesheet" href="{{ $style.RelPermalink }}">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="l-container">
+        {{ block "main" . }}{{ end }}
+    </div>
+</body>
+
+</html>
