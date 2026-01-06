@@ -104,11 +104,30 @@ body {
     background-image: radial-gradient(circle at 50% 0%, var(--color-deep-surface) 0%, var(--color-void-black) 70%);
     color: var(--color-text-primary);
     font-family: var(--font-sans);
-    line-height: 1.5;
+    line-height: 1.6;
     min-height: 100vh;
     padding: var(--spacing-md);
     transition: background-color 0.3s ease, color 0.3s ease;
 }
+
+/* Visibility Helpers */
+.dark-only {
+    display: block !important;
+}
+
+.light .dark-only {
+    display: none !important;
+}
+
+.light-only {
+    display: none !important;
+}
+
+.light .light-only {
+    display: block !important;
+}
+
+
 
 a {
     color: inherit;
@@ -645,10 +664,25 @@ a {
 }
 
 /* Color Variants */
-.blog-pill--green { border-color: rgba(52, 211, 153, 0.3); color: #34D399; }
-.blog-pill--purple { border-color: rgba(167, 139, 250, 0.3); color: #A78BFA; }
-.blog-pill--orange { border-color: rgba(251, 191, 36, 0.3); color: #FBBF24; }
-.blog-pill--pink { border-color: rgba(244, 114, 182, 0.3); color: #F472B6; }
+.blog-pill--green {
+    border-color: rgba(52, 211, 153, 0.3);
+    color: #34D399;
+}
+
+.blog-pill--purple {
+    border-color: rgba(167, 139, 250, 0.3);
+    color: #A78BFA;
+}
+
+.blog-pill--orange {
+    border-color: rgba(251, 191, 36, 0.3);
+    color: #FBBF24;
+}
+
+.blog-pill--pink {
+    border-color: rgba(244, 114, 182, 0.3);
+    color: #F472B6;
+}
 
 .blog-pill:hover {
     background: rgba(255, 255, 255, 0.08);
@@ -657,4 +691,35 @@ a {
 
 .light .blog-pill {
     background: rgba(0, 0, 0, 0.03);
+}
+
+/* Git Graph Lighting */
+.git-graph-container {
+    background: var(--color-void-black);
+    padding: 24px;
+    border-radius: var(--radius-inner);
+    border: 1px solid var(--color-stroke);
+    width: 100%;
+    overflow-x: auto;
+    /* Subtle inner shadow for depth */
+    box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.git-graph-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+    min-width: 700px;
+    /* Sophisticated filter to transform standard GH graph into the brand greens */
+    filter: invert(1) hue-rotate(160deg) brightness(0.9) contrast(1.2) saturate(1.4);
+}
+
+.light .git-graph-container {
+    background: var(--color-deep-surface) !important;
+    border-color: var(--color-stroke);
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.light .git-graph-container img {
+    filter: brightness(0.9) contrast(1.1);
 }

@@ -73,7 +73,7 @@
 
 <main class="l-grid">
     
-    <div class="c-card col-span-8 span-row-2">
+    <div class="c-card col-span-8">
     
     <div class="c-card__header">
         <h3 class="text-h2 c-card__title">Timeline</h3>
@@ -138,6 +138,74 @@
     </div>
 </div>
     
+
+    
+    <div class="c-card col-span-8">
+    
+    <div class="c-card__header">
+        <h3 class="text-h2 c-card__title">Contributions</h3>
+        
+    </div>
+    
+    <div class="c-card__content">
+        <div style="display: flex; flex-direction: column; gap: 12px; width: 100%;">
+        <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 4px;">
+            <span class="text-h3" id="github-contribution-count" style="font-size: 14px; opacity: 0.8;">Loading
+                activity...</span>
+            <div style="display: flex; align-items: center; gap: 4px; opacity: 0.6; font-size: 11px;">
+                <i data-lucide="info" style="width: 12px; height: 12px;"></i>
+                <span>Public & Private</span>
+            </div>
+        </div>
+
+        <div class="git-graph-container dark-only">
+            <img src="https://github-contributions-api.deno.dev/mars-s.svg?theme=github-dark&no-total=true&no-legend=true&no-title=true"
+                alt="Github contribution grid" style="width: 100%; height: auto;" />
+        </div>
+        <div class="git-graph-container light-only">
+            <img src="https://github-contributions-api.deno.dev/mars-s.svg?theme=github&no-total=true&no-legend=true&no-title=true"
+                alt="Github contribution grid" style="width: 100%; height: auto;" />
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <a href="https://github.com/mars-s" target="_blank"
+                style="display: flex; align-items: center; gap: 8px; text-decoration: none; opacity: 0.7; transition: opacity 0.2s;"
+                onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'">
+                <i data-lucide="github" style="width: 14px; height: 14px; color: var(--color-text-primary);"></i>
+                <span style="font-size: 12px; color: var(--color-text-secondary);">@mars-s on GitHub</span>
+            </a>
+            <div style="display: flex; align-items: center; gap: 10px; font-size: 11px;">
+                <span style="color: var(--color-text-muted);">Less</span>
+                <div style="display: flex; gap: 4px;">
+                    <div
+                        style="width: 10px; height: 10px; background: var(--color-void-black); border: 1px solid var(--color-stroke); border-radius: 2px;">
+                    </div>
+                    <div style="width: 10px; height: 10px; background: rgba(52, 211, 153, 0.15); border-radius: 2px;">
+                    </div>
+                    <div style="width: 10px; height: 10px; background: rgba(52, 211, 153, 0.4); border-radius: 2px;">
+                    </div>
+                    <div style="width: 10px; height: 10px; background: rgba(52, 211, 153, 0.7); border-radius: 2px;">
+                    </div>
+                    <div style="width: 10px; height: 10px; background: var(--color-signal-green); border-radius: 2px;">
+                    </div>
+                </div>
+                <span style="color: var(--color-text-muted);">More</span>
+            </div>
+        </div>
+    </div>
+    <script>
+        fetch('https://github-contributions-api.deno.dev/mars-s')
+            .then(res => res.json())
+            .then(data => {
+                const count = data.total.lastYear;
+                document.getElementById('github-contribution-count').innerText = count + ' contributions in the last year';
+            })
+            .catch(() => {
+                document.getElementById('github-contribution-count').innerText = '443 contributions in the last year';
+            });
+    </script>
+    </div>
+</div>
 
     
     <div class="col-span-12">
