@@ -2,6 +2,13 @@
 <html lang="{{ or .Site.Language.LanguageCode .Site.Language.Lang }}">
 
 <head>
+    <script>
+        // Inline script to prevent theme flash
+        (function () {
+            const theme = localStorage.getItem('user-theme') || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+            if (theme === 'light') document.documentElement.classList.add('light');
+        })();
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ .Title }} | {{ .Site.Title }}</title>
@@ -15,6 +22,8 @@
         rel="stylesheet">
     <!-- DevIcons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 
 <body>
@@ -23,11 +32,44 @@
             <a href="/" class="nav-island__link">Home</a>
             <div class="nav-island__divider"></div>
             <a href="/about" class="nav-island__link">About me</a>
+            <div class="nav-island__divider"></div>
+            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+                <i id="theme-icon"></i>
+            </button>
         </div>
     </nav>
     <div class="l-container">
         {{ block "main" . }}{{ end }}
     </div>
+
+    <script>
+        // Initialize Lucide
+        lucide.createIcons();
+
+        const themeToggle = document.getElementById('theme-toggle');
+        const root = document.documentElement;
+
+        function updateThemeUI() {
+            const isLight = root.classList.contains('light');
+            const themeIcon = document.getElementById('theme-icon');
+            if (!themeIcon) return;
+
+            // User requested: "moon icon when its light theme and sun icon when its dark theme"
+            const iconName = isLight ? 'moon' : 'sun';
+
+            themeIcon.setAttribute('data-lucide', iconName);
+            lucide.createIcons();
+        }
+
+        // Initial UI update
+        updateThemeUI();
+
+        themeToggle.addEventListener('click', () => {
+            const isLight = root.classList.toggle('light');
+            localStorage.setItem('user-theme', isLight ? 'light' : 'dark');
+            updateThemeUI();
+        });
+    </script>
 </body>
 
 </html>

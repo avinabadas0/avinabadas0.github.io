@@ -1,5 +1,5 @@
 :root {
-    /* Colors */
+    /* Colors - Dark (Default) */
     --color-void-black: #050505;
     --color-deep-surface: #0F0F0F;
     --color-card-surface: #161616;
@@ -33,6 +33,57 @@
     --radius-icon: 50%;
 }
 
+.light {
+    --color-void-black: #fafafa;
+    --color-deep-surface: #f4f4f5;
+    --color-card-surface: #ffffff;
+    --color-elevated-surface: #f4f4f5;
+    --color-stroke: rgba(0, 0, 0, 0.08);
+
+    --color-text-primary: #09090b;
+    --color-text-secondary: #52525b;
+    --color-text-muted: #71717a;
+
+    background-image: radial-gradient(circle at 50% 0%, #e4e4e7 0%, #fafafa 70%);
+}
+
+.light .nav-island__content {
+    background: rgba(255, 255, 255, 0.7);
+    border-color: rgba(0, 0, 0, 0.05);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    /* Toned down shadow */
+}
+
+.light .c-card:hover {
+    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.08);
+    /* Toned down shadow */
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+.light .l-hero__name {
+    background: linear-gradient(to bottom, #09090b, #52525b);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.light .theme-toggle:hover,
+.light .nav-island__link:hover {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.light .btn--primary {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.light .btn--primary:hover {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
 *,
 *::before,
 *::after {
@@ -44,12 +95,13 @@
 body {
     background-color: var(--color-void-black);
     /* Vignette Gradient */
-    background-image: radial-gradient(circle at 50% 0%, #1a1a1a 0%, var(--color-void-black) 70%);
+    background-image: radial-gradient(circle at 50% 0%, var(--color-deep-surface) 0%, var(--color-void-black) 70%);
     color: var(--color-text-primary);
     font-family: var(--font-sans);
     line-height: 1.5;
     min-height: 100vh;
     padding: var(--spacing-md);
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 a {
@@ -132,7 +184,25 @@ a {
 
 .nav-island__link:hover {
     color: var(--color-text-primary);
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.theme-toggle {
+    background: transparent;
+    border: none;
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    padding: 6px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.theme-toggle:hover {
+    color: var(--color-text-primary);
+    background: rgba(255, 255, 255, 0.1);
 }
 
 .nav-island__divider {
@@ -193,6 +263,39 @@ a {
     overflow: hidden;
     position: relative;
     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    animation: slideUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.l-grid>div:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.l-grid>div:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.l-grid>div:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.l-grid>div:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+.l-grid>div:nth-child(5) {
+    animation-delay: 0.5s;
 }
 
 .c-card:hover {
@@ -267,9 +370,21 @@ a {
 }
 
 .skill-icon span {
-    font-size: 10px;
-    font-family: var(--font-mono);
-    opacity: 0.5;
+    font-size: 11px;
+    font-family: var(--font-sans);
+    padding: 2px 10px;
+    border-radius: 999px;
+    background: var(--color-elevated-surface);
+    border: 1px solid var(--color-stroke);
+    color: var(--color-text-secondary);
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.skill-icon:hover span {
+    color: var(--color-text-primary);
+    border-color: var(--color-text-primary);
+    background: var(--color-card-surface);
 }
 
 /* Timeline */
