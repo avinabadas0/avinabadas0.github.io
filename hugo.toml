@@ -1,3 +1,7 @@
-baseURL = 'https://example.org/'
+baseURL = 'https://avinabadas0.github.io/'
 languageCode = 'en-us'
-title = 'My New Hugo Site'
+title = 'Portfolio | Avinaba Das'
+theme = []
+
+[params]
+  description = "CTO & Software Engineer building high-performance systems."
