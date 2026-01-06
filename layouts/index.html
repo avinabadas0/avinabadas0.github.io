@@ -37,12 +37,19 @@
     "class" "col-span-8"
     "title" "Contributions"
     "content" `<div style="display: flex; flex-direction: column; gap: 12px; width: 100%;">
-        <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 4px;">
-            <span class="text-h3" id="github-contribution-count" style="font-size: 14px; opacity: 0.8;">Loading
-                activity...</span>
-            <div style="display: flex; align-items: center; gap: 4px; opacity: 0.6; font-size: 11px;">
-                <i data-lucide="info" style="width: 12px; height: 12px;"></i>
-                <span>Public & Private</span>
+        <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 20px;">
+            <div style="display: flex; flex-direction: column; gap: 4px;">
+                <span
+                    style="font-size: 11px; color: var(--color-text-secondary); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600;">Commit
+                    History</span>
+                <span class="text-h3" id="github-contribution-count" style="font-size: 16px; font-weight: 500;">Fetching
+                    activity...</span>
+            </div>
+            <div
+                style="display: flex; align-items: center; gap: 6px; padding: 4px 10px; background: var(--color-deep-surface); border-radius: 6px; border: 1px solid var(--color-stroke);">
+                <i data-lucide="activity" style="width: 12px; height: 12px; color: var(--color-signal-green);"></i>
+                <span style="font-size: 10px; font-weight: 500; color: var(--color-text-secondary);">Verified
+                    Graph</span>
             </div>
         </div>
 
