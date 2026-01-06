@@ -3,6 +3,28 @@
 
 <head>
 	<meta name="generator" content="Hugo 0.154.2"><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body);"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const isLight = document.documentElement.classList.contains('light');
+            mermaid.initialize({ startOnLoad: false, theme: isLight ? 'default' : 'dark' });
+            
+            document.querySelectorAll('code.language-mermaid').forEach(el => {
+                const pre = el.parentElement;
+                const div = document.createElement('div');
+                div.className = 'mermaid';
+                div.textContent = el.textContent;
+                pre.replaceWith(div);
+            });
+            mermaid.init(undefined, ".mermaid");
+        });
+    </script>
     <script>
         
         (function () {
@@ -42,8 +64,8 @@
     <div class="l-container">
         
 <header class="l-hero">
-    <span class="l-hero__greeting">Hello, world.</span>
-    <h1 class="l-hero__name">Avi</h1>
+    <span class="l-hero__greeting">FullStack Developer</span>
+    <h1 class="l-hero__name">Avinaba Das</h1>
     <p class="l-hero__bio">Building robust multitenant architectures, agentic systems, and high-performance applications
         with Rust, React, and AWS.</p>
     <a href="/about" class="btn btn--primary">Deep dive into my work</a>
@@ -61,7 +83,7 @@
     <div class="c-card__content">
         <div class="timeline">
     <div class="timeline__item timeline__item--active">
-        <span class="timeline__date">2025 — 2026</span>
+        <span class="timeline__date">2025 — PRESENT</span>
         <h4 class="timeline__title">Heimdall</h4>
         <p class="timeline__desc">CTO and Founder @ Korvant. Lead development of the Heimdall dashboard, focusing on
             high-availability multitenant architecture.</p>
@@ -118,33 +140,53 @@
     
 
     
-    
-    <div class="c-card col-span-4">
-    
-    <div class="c-card__header">
-        <h3 class="text-h2 c-card__title">Project Beta</h3>
-        
+    <div class="col-span-12">
+        <div
+            style="display: flex; justify-content: space-between; align-items: center; margin: var(--spacing-xl) 0 var(--spacing-md);">
+            <h2 class="text-h2">Recent Writing</h2>
+            <a href="/blogs" class="btn btn--secondary" style="padding: 6px 16px; font-size: 12px;">All Posts</a>
+        </div>
+
+        <div class="blog-list">
+            
+            <a href="/blogs/architecting-heimdall/" class="blog-item">
+                <div class="blog-item__main">
+                    <h3 class="blog-item__title">Architecting Heimdall: Multitenancy with Rust</h3>
+                    <p class="blog-item__desc">A deep dive into the technical challenges of building a high-availability multitenant dashboard.</p>
+                </div>
+                <div class="blog-item__meta">
+                    <span class="blog-item__date">Jan 06, 2026</span>
+                    <div class="blog-item__pills">
+                        
+                        <div class="blog-pill"><i data-lucide="layers"></i><span>Heimdall</span></div>
+                        
+
+                        
+                        
+                        
+                        <div class="blog-pill blog-pill--green">
+                            <i data-lucide="tag"></i>
+                            <span>Rust</span>
+                        </div>
+                        
+                        
+                        <div class="blog-pill blog-pill--green">
+                            <i data-lucide="tag"></i>
+                            <span>Architecture</span>
+                        </div>
+                        
+                        
+                        <div class="blog-pill blog-pill--green">
+                            <i data-lucide="tag"></i>
+                            <span>Multitenancy</span>
+                        </div>
+                        
+                    </div>
+                </div>
+            </a>
+            
+        </div>
     </div>
-    
-    <div class="c-card__content">
-        <p class='text-body' style='color: var(--color-text-secondary)'>An experimental visual design system using CSS Grid and WebGL.</p><a
-        href='/projects/project-beta/' class='btn btn--secondary' style='margin-top: 16px'>View Project</a>
-    </div>
-</div>
-    
-    <div class="c-card col-span-4">
-    
-    <div class="c-card__header">
-        <h3 class="text-h2 c-card__title">Project Alpha</h3>
-        
-    </div>
-    
-    <div class="c-card__content">
-        <p class='text-body' style='color: var(--color-text-secondary)'>A high-performance web application optimized for agentic workflows.</p><a
-        href='/projects/project-alpha/' class='btn btn--secondary' style='margin-top: 16px'>View Project</a>
-    </div>
-</div>
-    
 </main>
 
     </div>

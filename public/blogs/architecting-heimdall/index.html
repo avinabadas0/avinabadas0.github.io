@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body);"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const isLight = document.documentElement.classList.contains('light');
+            mermaid.initialize({ startOnLoad: false, theme: isLight ? 'default' : 'dark' });
+            
+            document.querySelectorAll('code.language-mermaid').forEach(el => {
+                const pre = el.parentElement;
+                const div = document.createElement('div');
+                div.className = 'mermaid';
+                div.textContent = el.textContent;
+                pre.replaceWith(div);
+            });
+            mermaid.init(undefined, ".mermaid");
+        });
+    </script>
+    <script>
+        
+        (function () {
+            const theme = localStorage.getItem('user-theme') || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+            if (theme === 'light') document.documentElement.classList.add('light');
+        })();
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Architecting Heimdall: Multitenancy with Rust | My New Hugo Site</title>
+    
+    <link rel="stylesheet" href="/css/main.css">
+
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono&display=swap"
+        rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+    
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+    <nav class="nav-island">
+        <div class="nav-island__content">
+            <a href="/" class="nav-island__link">Home</a>
+            <div class="nav-island__divider"></div>
+            <a href="/about" class="nav-island__link">About me</a>
+            <div class="nav-island__divider"></div>
+            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+                <i id="theme-icon"></i>
+            </button>
+        </div>
+    </nav>
+    <div class="l-container">
+        
+<article class="l-hero prose">
+    <header style="margin-bottom: var(--spacing-2xl);">
+        <span class="l-hero__greeting">January 6, 2026</span>
+        <h1 class="l-hero__name">Architecting Heimdall: Multitenancy with Rust</h1>
+
+        <div style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px;">
+            
+            <a href="/projects/heimdall" class="blog-pill"
+                style="background: var(--color-elevated-surface); border: 1px solid var(--color-stroke);">
+                <i data-lucide="layers"></i>
+                <span>Project: Heimdall</span>
+            </a>
+            
+
+            
+            
+            
+            <div class="blog-pill blog-pill--green">
+                <i data-lucide="tag"></i>
+                <span>Rust</span>
+            </div>
+            
+            
+            <div class="blog-pill blog-pill--green">
+                <i data-lucide="tag"></i>
+                <span>Architecture</span>
+            </div>
+            
+            
+            <div class="blog-pill blog-pill--green">
+                <i data-lucide="tag"></i>
+                <span>Multitenancy</span>
+            </div>
+            
+        </div>
+
+        
+        <p class="l-hero__bio"
+            style="margin-top: 32px; font-style: italic; border-left: 2px solid var(--color-electric-purple); padding-left: 20px;">
+            A deep dive into the technical challenges of building a high-availability multitenant dashboard.
+        </p>
+        
+    </header>
+
+    <div class="blog-content">
+        <h1 id="technical-deep-dive">Technical Deep Dive</h1>
+<p>Building <strong>Heimdall</strong> required a robust approach to multitenancy. We chose Rust for its memory safety and performance characteristics.</p>
+<h2 id="multitenancy-model">Multitenancy Model</h2>
+<p>We use a <strong>Bridge approach</strong> where tenants share the same database but occupy distinct logical schemas.</p>
+<h3 id="mermaid-diagram-example">Mermaid Diagram Example</h3>
+<pre tabindex="0"><code class="language-mermaid" data-lang="mermaid">graph TD
+    User --&gt;|Auth| Gateway
+    Gateway --&gt;|TenantID| Logic
+    Logic --&gt;|RLS| DB[(PostgreSQL)]
+    DB --&gt;|Data| Logic
+    Logic --&gt;|Response| User
+</code></pre><h2 id="mathematical-modeling">Mathematical Modeling</h2>
+<p>The performance of our concurrent tenant isolations can be modeled by the following equation:</p>
+<p>$$ P_{tenant} = \frac{R_{total} - \sum_{i=1}^{n} L_i}{C_{overhead}} $$</p>
+<p>Where $L_i$ represents the latency of the $i$-th tenant request.</p>
+<h2 id="tech-stack-overview">Tech Stack Overview</h2>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Layer</th>
+          <th style="text-align: left">Technology</th>
+          <th style="text-align: left">Role</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">Backend</td>
+          <td style="text-align: left">Rust</td>
+          <td style="text-align: left">Core Logic</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Frontend</td>
+          <td style="text-align: left">React</td>
+          <td style="text-align: left">Dashboard</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Infrastructure</td>
+          <td style="text-align: left">AWS</td>
+          <td style="text-align: left">Scaling</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="summary">Summary</h2>
+<p>This architecture allows us to scale to thousands of tenants with minimal overhead.</p>
+
+    </div>
+
+    <footer
+        style="margin-top: calc(var(--spacing-2xl) * 2); padding-top: var(--spacing-xl); border-top: 1px solid var(--color-stroke);">
+        <a href="/blogs" class="btn btn--secondary">← Back to all posts</a>
+    </footer>
+</article>
+
+    </div>
+
+    <script>
+        
+        lucide.createIcons();
+
+        const themeToggle = document.getElementById('theme-toggle');
+        const root = document.documentElement;
+
+        function updateThemeUI() {
+            const isLight = root.classList.contains('light');
+            const themeIcon = document.getElementById('theme-icon');
+            if (!themeIcon) return;
+
+            
+            const iconName = isLight ? 'moon' : 'sun';
+
+            themeIcon.setAttribute('data-lucide', iconName);
+            lucide.createIcons();
+        }
+
+        
+        updateThemeUI();
+
+        themeToggle.addEventListener('click', () => {
+            const isLight = root.classList.toggle('light');
+            localStorage.setItem('user-theme', isLight ? 'light' : 'dark');
+            updateThemeUI();
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+{{ define "main" }}
+<article class="l-hero prose">
+    <header style="margin-bottom: var(--spacing-2xl);">
+        <span class="l-hero__greeting">{{ .Date.Format "January 2, 2006" }}</span>
+        <h1 class="l-hero__name">{{ .Title }}</h1>
+
+        <div style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px;">
+            {{ with .Params.project }}
+            <a href="/projects/{{ . | urlize }}" class="blog-pill"
+                style="background: var(--color-elevated-surface); border: 1px solid var(--color-stroke);">
+                <i data-lucide="layers"></i>
+                <span>Project: {{ . }}</span>
+            </a>
+            {{ end }}
+
+            {{ $colors := slice "green" "purple" "orange" "pink" }}
+            {{ range $index, $tag := .Params.tags }}
+            {{ $color := index $colors (mod (len $tag) (len $colors)) }}
+            <div class="blog-pill blog-pill--{{ $color }}">
+                <i data-lucide="tag"></i>
+                <span>{{ . }}</span>
+            </div>
+            {{ end }}
+        </div>
+
+        {{ with .Params.desc }}
+        <p class="l-hero__bio"
+            style="margin-top: 32px; font-style: italic; border-left: 2px solid var(--color-electric-purple); padding-left: 20px;">
+            {{ . }}
+        </p>
+        {{ end }}
+    </header>
+
+    <div class="blog-content">
+        {{ .Content }}
+    </div>
+
+    <footer
+        style="margin-top: calc(var(--spacing-2xl) * 2); padding-top: var(--spacing-xl); border-top: 1px solid var(--color-stroke);">
+        <a href="/blogs" class="btn btn--secondary">← Back to all posts</a>
+    </footer>
+</article>
+{{ end }}

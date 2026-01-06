@@ -2,6 +2,35 @@
 <html lang="en-us">
 
 <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body);"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const isLight = document.documentElement.classList.contains('light');
+            mermaid.initialize({ startOnLoad: false, theme: isLight ? 'default' : 'dark' });
+            
+            document.querySelectorAll('code.language-mermaid').forEach(el => {
+                const pre = el.parentElement;
+                const div = document.createElement('div');
+                div.className = 'mermaid';
+                div.textContent = el.textContent;
+                pre.replaceWith(div);
+            });
+            mermaid.init(undefined, ".mermaid");
+        });
+    </script>
+    <script>
+        
+        (function () {
+            const theme = localStorage.getItem('user-theme') || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+            if (theme === 'light') document.documentElement.classList.add('light');
+        })();
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project Beta | My New Hugo Site</title>
@@ -14,17 +43,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono&display=swap"
         rel="stylesheet">
     
-    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
     
     <script src="https://unpkg.com/lucide@latest"></script>
-    <script>
-        
-        (function () {
-            const theme = localStorage.getItem('user-theme') || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
-            if (theme === 'light') document.body.classList.add('light');
-        })();
-    </script>
 </head>
 
 <body>
@@ -57,11 +78,13 @@
         lucide.createIcons();
 
         const themeToggle = document.getElementById('theme-toggle');
-        const body = document.body;
+        const root = document.documentElement;
 
         function updateThemeUI() {
-            const isLight = body.classList.contains('light');
+            const isLight = root.classList.contains('light');
             const themeIcon = document.getElementById('theme-icon');
+            if (!themeIcon) return;
+
             
             const iconName = isLight ? 'moon' : 'sun';
 
@@ -73,7 +96,7 @@
         updateThemeUI();
 
         themeToggle.addEventListener('click', () => {
-            const isLight = body.classList.toggle('light');
+            const isLight = root.classList.toggle('light');
             localStorage.setItem('user-theme', isLight ? 'light' : 'dark');
             updateThemeUI();
         });

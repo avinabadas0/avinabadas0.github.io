@@ -2,6 +2,28 @@
 <html lang="en-us">
 
 <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body);"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const isLight = document.documentElement.classList.contains('light');
+            mermaid.initialize({ startOnLoad: false, theme: isLight ? 'default' : 'dark' });
+            
+            document.querySelectorAll('code.language-mermaid').forEach(el => {
+                const pre = el.parentElement;
+                const div = document.createElement('div');
+                div.className = 'mermaid';
+                div.textContent = el.textContent;
+                pre.replaceWith(div);
+            });
+            mermaid.init(undefined, ".mermaid");
+        });
+    </script>
     <script>
         
         (function () {
@@ -45,8 +67,8 @@
     <h1 class="l-hero__name">Avinaba Das</h1>
     <p class="l-hero__bio">
         I am a Bachelor of Computer Science student at Monash University and the CTO/Founder of Korvant.
-        I specialize in building high-availability multitenant architectures and exploring the frontiers of agentic AI.
-        My current focus is engineering the <strong>Heimdall</strong> dashboard.
+        I specialise in building high-availability multitenant architectures and exploring the frontiers of agentic AI.
+        My current focus is engineering the <strong>Heimdall</strong> dashboard @ Korvant.
     </p>
     <div style="margin-top: 24px;">
         <a href="mailto:avinabadas1@gmail.com" class="btn btn--primary">Get in touch</a>
@@ -65,7 +87,7 @@
     <div class="c-card__content">
         <div class="timeline">
     <div class="timeline__item timeline__item--active">
-        <span class="timeline__date">2025 — 2026</span>
+        <span class="timeline__date">2025 — PRESENT</span>
         <h4 class="timeline__title">Heimdall</h4>
         <p class="timeline__desc">CTO and Founder @ Korvant. Lead development of the Heimdall dashboard, focusing on
             high-availability multitenant architecture.</p>

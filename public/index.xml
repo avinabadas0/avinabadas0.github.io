@@ -6,8 +6,15 @@
     <description>Recent content on My New Hugo Site</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 01 Jan 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 06 Jan 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Architecting Heimdall: Multitenancy with Rust</title>
+      <link>http://localhost:1313/blogs/architecting-heimdall/</link>
+      <pubDate>Tue, 06 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blogs/architecting-heimdall/</guid>
+      <description>&lt;h1 id=&#34;technical-deep-dive&#34;&gt;Technical Deep Dive&lt;/h1&gt;&#xA;&lt;p&gt;Building &lt;strong&gt;Heimdall&lt;/strong&gt; required a robust approach to multitenancy. We chose Rust for its memory safety and performance characteristics.&lt;/p&gt;&#xA;&lt;h2 id=&#34;multitenancy-model&#34;&gt;Multitenancy Model&lt;/h2&gt;&#xA;&lt;p&gt;We use a &lt;strong&gt;Bridge approach&lt;/strong&gt; where tenants share the same database but occupy distinct logical schemas.&lt;/p&gt;&#xA;&lt;h3 id=&#34;mermaid-diagram-example&#34;&gt;Mermaid Diagram Example&lt;/h3&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-mermaid&#34; data-lang=&#34;mermaid&#34;&gt;graph TD&#xA;    User --&amp;gt;|Auth| Gateway&#xA;    Gateway --&amp;gt;|TenantID| Logic&#xA;    Logic --&amp;gt;|RLS| DB[(PostgreSQL)]&#xA;    DB --&amp;gt;|Data| Logic&#xA;    Logic --&amp;gt;|Response| User&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;mathematical-modeling&#34;&gt;Mathematical Modeling&lt;/h2&gt;&#xA;&lt;p&gt;The performance of our concurrent tenant isolations can be modeled by the following equation:&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Heimdall</title>
       <link>http://localhost:1313/projects/heimdall/</link>
