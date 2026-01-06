@@ -1,31 +1,42 @@
 # Project Context
 
 ## Purpose
-[Describe your project's purpose and goals]
+A high-end personal portfolio website built with Hugo, featuring a "HUD" (Heads-Up Display) graphic design theme. The project aims to showcase work with a technical, hacker-inspired aesthetic.
 
 ## Tech Stack
-- [List your primary technologies]
-- [e.g., TypeScript, React, Node.js]
+- **Hugo**: Static Site Generator (SSG).
+- **Vanilla CSS**: Custom design system (avoiding external frameworks like Tailwind unless requested).
+- **HTML5 & Vanilla JavaScript**: Core web technologies for structure and interactivity.
+- **OpenSpec**: Framework for spec-driven development and change tracking.
 
 ## Project Conventions
 
 ### Code Style
-[Describe your code style preferences, formatting rules, and naming conventions]
+- **Semantic HTML**: Prioritize clear, accessible structure with appropriate HTML5 elements.
+- **Modern CSS**: Utilize CSS Variables, Flexbox, and Grid. Avoid ad-hoc utility classes in favor of a cohesive design system.
+- **Simplicity**: Follow the "Simplicity First" rule—prefer <100 lines of new code and single-file implementations until proven insufficient.
 
 ### Architecture Patterns
-[Document your architectural decisions and patterns]
+- **Hugo Template System**: Modular use of `layouts/`, `partials/`, and `assets/`.
+- **Spec-Driven Development**: All non-trivial changes must follow the OpenSpec workflow: Proposal -> implementation (tasks) -> Archive.
+- **HUD Theme Design**: Consistent use of technical typography (e.g., monospace fonts), corner accents, glassmorphism, and red/status highlights.
 
 ### Testing Strategy
-[Explain your testing approach and requirements]
+- **Manual Visual Review**: Ensuring design fidelity across different screen sizes and browsers.
+- **Responsive Validation**: All components must be fully responsive.
 
 ### Git Workflow
-[Describe your branching strategy and commit conventions]
+- **Atomic Commits**: Commits should be focused and correspond to tasks in `tasks.md`.
+- **Descriptive Branching**: Use kebab-case branch names tied to the `change-id`.
 
 ## Domain Context
-[Add domain-specific knowledge that AI assistants need to understand]
+- The site is a personal portfolio; content is primarily projects, blog posts, and contact information.
+- The "HUD" theme is a central aesthetic goal, requiring precise CSS execution.
 
 ## Important Constraints
-[List any technical, business, or regulatory constraints]
+- **No Heavy Frameworks**: Avoid adding large libraries or CSS frameworks unless strictly necessary.
+- **OpenSpec Compliance**: All changes must be validated using `openspec validate --strict`.
 
 ## External Dependencies
-[Document key external services, APIs, or systems]
+- **Google Fonts**: For technical typography (e.g., Outfit, Roboto Mono).
+- **Hugo**: Required for building and local development (`hugo server`).
