@@ -1,0 +1,9 @@
+{{ define "main" }}
+<article class="l-hero">
+    <h1 class="l-hero__name">{{ .Title }}</h1>
+    <div class="l-hero__bio">
+        {{ .Content }}
+    </div>
+    <a href="/projects" class="btn btn--secondary">← Back to Archive</a>
+</article>
+{{ end }}

@@ -1,0 +1,22 @@
+{{ define "main" }}
+<header class="l-hero">
+    <h1 class="l-hero__name">About Avi</h1>
+    <p class="l-hero__bio">{{ .Content }}</p>
+</header>
+
+<div class="l-grid">
+    <div class="col-span-12">
+        {{ partial "components/bento-card.html" (dict
+        "title" "Full Technical Journey"
+        "content" (partial "components/timeline-vertical.html" .)
+        ) }}
+    </div>
+
+    <div class="col-span-12">
+        {{ partial "components/bento-card.html" (dict
+        "title" "Technical Proficiency"
+        "content" (partial "components/skills-grid.html" .)
+        ) }}
+    </div>
+</div>
+{{ end }}

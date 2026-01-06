@@ -13,9 +13,18 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono&display=swap"
         rel="stylesheet">
+    <!-- DevIcons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
 </head>
 
 <body>
+    <nav class="nav-island">
+        <div class="nav-island__content">
+            <a href="/" class="nav-island__link">Home</a>
+            <div class="nav-island__divider"></div>
+            <a href="/about" class="nav-island__link">About me</a>
+        </div>
+    </nav>
     <div class="l-container">
         {{ block "main" . }}{{ end }}
     </div>

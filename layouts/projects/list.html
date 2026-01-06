@@ -1,0 +1,17 @@
+{{ define "main" }}
+<header class="l-hero">
+    <h1 class="l-hero__name">Archive</h1>
+    <p class="l-hero__bio">A collection of research, projects, and experiments.</p>
+</header>
+
+<div class="l-grid">
+    {{ range .Pages }}
+    {{ partial "components/bento-card.html" (dict
+    "class" "col-span-4"
+    "title" .Title
+    "content" (print `<p class='text-secondary'>` .Summary `</p><a href='` .RelPermalink `' class='btn btn--secondary'
+        style='margin-top: 16px'>Read More</a>`)
+    ) }}
+    {{ end }}
+</div>
+{{ end }}

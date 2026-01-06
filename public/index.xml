@@ -6,8 +6,15 @@
     <description>Recent content on My New Hugo Site</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 01 Feb 2023 12:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 01 Jan 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Heimdall</title>
+      <link>http://localhost:1313/projects/heimdall/</link>
+      <pubDate>Wed, 01 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/projects/heimdall/</guid>
+      <description>A high-performance multitenant architecture built for scale.</description>
+    </item>
     <item>
       <title>Project Beta</title>
       <link>http://localhost:1313/projects/project-beta/</link>
@@ -28,6 +35,13 @@
       <pubDate>Sun, 01 Jan 2023 12:00:00 +0000</pubDate>
       <guid>http://localhost:1313/projects/project-alpha/</guid>
       <description>A high-performance web application optimized for agentic workflows.</description>
+    </item>
+    <item>
+      <title>About Me</title>
+      <link>http://localhost:1313/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/about/</guid>
+      <description>&lt;p&gt;I am a software engineer focused on the intersection of systems engineering and AI. This page details my technical journey and the specific tools I use to build modern software.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

@@ -97,11 +97,85 @@ a {
 .l-container {
     max-width: 1440px;
     margin: 0 auto;
+    padding: 0 var(--spacing-md);
+}
+
+.nav-island {
+    position: fixed;
+    top: var(--spacing-lg);
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+}
+
+.nav-island__content {
+    background: rgba(22, 22, 22, 0.5);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--color-stroke);
+    padding: 6px 12px;
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.nav-island__link {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    padding: 6px 16px;
+    border-radius: 999px;
+    transition: all 0.2s ease;
+}
+
+.nav-island__link:hover {
+    color: var(--color-text-primary);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.nav-island__divider {
+    width: 1px;
+    height: 16px;
+    background: var(--color-stroke);
+}
+
+.l-hero {
+    padding: calc(var(--spacing-2xl) * 2) 0 var(--spacing-2xl);
+    max-width: 800px;
+}
+
+.l-hero__greeting {
+    font-size: 20px;
+    color: var(--color-signal-green);
+    font-family: var(--font-mono);
+    margin-bottom: var(--spacing-sm);
+    display: block;
+}
+
+.l-hero__name {
+    font-size: clamp(48px, 8vw, 84px);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: var(--spacing-lg);
+    background: linear-gradient(to bottom, #fff, #a1a1aa);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -0.04em;
+}
+
+.l-hero__bio {
+    font-size: 20px;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--spacing-xl);
+    max-width: 600px;
 }
 
 .l-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(12, 1fr);
     gap: var(--spacing-md);
     padding-bottom: var(--spacing-xl);
 }
@@ -144,19 +218,106 @@ a {
     flex-grow: 1;
 }
 
-/* Utility Classes for Grid Spans */
-@media (min-width: 768px) {
-    .span-2 {
-        grid-column: span 2;
-    }
+/* Bento Spans */
+.col-span-12 {
+    grid-column: span 12;
+}
 
-    .span-3 {
-        grid-column: span 3;
-    }
+.col-span-8 {
+    grid-column: span 8;
+}
 
-    .span-row-2 {
-        grid-row: span 2;
+.col-span-4 {
+    grid-column: span 4;
+}
+
+.col-span-6 {
+    grid-column: span 6;
+}
+
+@media (max-width: 1024px) {
+
+    .col-span-8,
+    .col-span-4,
+    .col-span-6 {
+        grid-column: span 12;
     }
+}
+
+/* Skills Grid */
+.skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+}
+
+.skill-icon {
+    font-size: 32px;
+    color: var(--color-text-secondary);
+    transition: all 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.skill-icon:hover {
+    color: var(--color-text-primary);
+    transform: scale(1.1);
+}
+
+.skill-icon span {
+    font-size: 10px;
+    font-family: var(--font-mono);
+    opacity: 0.5;
+}
+
+/* Timeline */
+.timeline {
+    position: relative;
+    padding-left: 24px;
+    border-left: 1px dashed var(--color-stroke);
+}
+
+.timeline__item {
+    position: relative;
+    padding-bottom: var(--spacing-xl);
+}
+
+.timeline__item::before {
+    content: '';
+    position: absolute;
+    left: -29px;
+    top: 6px;
+    width: 9px;
+    height: 9px;
+    background: var(--color-card-surface);
+    border: 2px solid var(--color-text-muted);
+    border-radius: 50%;
+}
+
+.timeline__item--active::before {
+    background: var(--color-electric-purple);
+    border-color: var(--color-electric-purple);
+    box-shadow: 0 0 10px var(--color-electric-purple);
+}
+
+.timeline__date {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--color-electric-purple);
+    margin-bottom: 4px;
+    display: block;
+}
+
+.timeline__title {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.timeline__desc {
+    font-size: 14px;
+    color: var(--color-text-secondary);
 }
 
 /* Special Card Styles */
